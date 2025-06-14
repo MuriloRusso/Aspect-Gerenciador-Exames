@@ -8,28 +8,11 @@ export default function useColumns() {
 
 
     const columns: GridColDef[] = [
-        { field: 'logo', headerName: 'Logo', width: 150, renderCell(params) {                
-                return(
-                    <img 
-                        src={
-                            params.value ? params.value : 
-                            `https://placehold.co/100x100?text=${params.row.name}`
-                        }
-                        style={{maxHeight: '90%', borderRadius: 100, margin: "2.5% 0"}}
-                    />
-                )
-            },
-        },
-        { field: 'name', headerName: 'Empresa/Cliente', width: 350 },
-        { field: 'ower', headerName: 'Nome Dono', width: 250 },
-        { field: 'phone', headerName: 'Telefone', width: 150 },
-        { field: 'created_at', headerName: 'Criado', width: 150, },
-
-        {field: 'id', headerName: '', renderCell(params){
-            // return <ListMenu/>
-            return <></>
-        }}
-
+        { field: 'id_exam', headerName: 'ID do Exame', width: 350 },
+        { field: 'specialty', headerName: 'Especialidade', width: 250 },
+        { field: 'informations', headerName: 'Informações', width: 150 },
+        { field: 'date_time', headerName: 'Data e Hora', width: 150 },
+        { field: 'created_at', headerName: 'Criado', width: 150, }
     ];
     return {columns}
 }

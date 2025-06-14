@@ -9,10 +9,5 @@ export default function useGetList() {
         .catch(error => console.error(error));
     }, []);
 
-    useEffect(() => {
-        console.log('rows');
-
-        console.log(rows);
-    }, [rows]);
     return { rows };
 }
