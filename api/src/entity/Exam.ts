@@ -1,7 +1,7 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
-export class CadExam {
+export class Exam {
   @PrimaryGeneratedColumn()
   id!: number;
 

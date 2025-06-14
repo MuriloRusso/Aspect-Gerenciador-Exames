@@ -1,6 +1,7 @@
 import express from "express";
 import { AppDataSource } from "./data-source";
-import { Usuario } from "./entity/Usuario";
+import { Exam } from "./entity/Exam";
+import { Scheduling } from "./entity/Scheduling";
 
 const app = express();
 app.use(express.json());
@@ -8,16 +9,21 @@ app.use(express.json());
 AppDataSource.initialize().then(() => {
   console.log("📦 Banco de dados conectado com sucesso!");
 
-  app.get("/usuarios", async (req, res) => {
-    const usuarios = await AppDataSource.getRepository(Usuario).find();
-    res.json(usuarios);
+  app.get("/exams", async (req, res) => {
+    const exams = await AppDataSource.getRepository(Exam).find();
+    res.json(exams);
   });
 
-  app.post("/usuarios", async (req, res) => {
-    const repo = AppDataSource.getRepository(Usuario);
-    const novoUsuario = repo.create(req.body);
-    const resultado = await repo.save(novoUsuario);
-    res.status(201).json(resultado);
+  app.get("/scheduling", async (req, res) => {
+    const scheduling = await AppDataSource.getRepository(Scheduling).find();
+    res.json(scheduling);
+  });
+
+  app.post("/scheduling", async (req, res) => {
+    const repo = AppDataSource.getRepository(Scheduling);
+    const newScheduling = repo.create(req.body);
+    const result = await repo.save(newScheduling);
+    res.status(201).json(result);
   });
 
   app.listen(3000, () => {

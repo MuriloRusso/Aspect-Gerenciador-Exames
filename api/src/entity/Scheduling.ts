@@ -1,15 +1,15 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { CadExam } from "./Exam";
+import { Exam } from "./Exam";
 
 @Entity()
-export class CadScheduling {
+export class Scheduling {
   @PrimaryGeneratedColumn()
   id!: number;
 
   // Relação ManyToOne para chave estrangeira
-  @ManyToOne(() => CadExam, { onDelete: "CASCADE" })
+  @ManyToOne(() => Exam, { onDelete: "CASCADE" })
   @JoinColumn({ name: "id_exam" })
-  exam!: CadExam;
+  exam!: Exam;
 
   @Column()
   specialty!: string;

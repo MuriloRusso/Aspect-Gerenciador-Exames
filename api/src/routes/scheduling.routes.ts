@@ -1,19 +1,19 @@
 // src/routes/usuario.routes.ts
 import { Router } from "express";
 import { AppDataSource } from "../data-source";
-import { Usuario } from "../entity/Usuario";
+import { Scheduling } from "../entity/Scheduling";
 
 const router = Router();
-const repo = AppDataSource.getRepository(Usuario);
+const repo = AppDataSource.getRepository(Scheduling);
 
 router.get("/", async (req, res) => {
-  const usuarios = await repo.find();
-  res.json(usuarios);
+  const schedulings = await repo.find();
+  res.json(schedulings);
 });
 
 router.post("/", async (req, res) => {
-  const usuario = repo.create(req.body);
-  const resultado = await repo.save(usuario);
+  const scheduling = repo.create(req.body);
+  const resultado = await repo.save(scheduling);
   res.status(201).json(resultado);
 });
 
