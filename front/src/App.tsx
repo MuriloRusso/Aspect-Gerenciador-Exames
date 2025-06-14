@@ -11,7 +11,7 @@ import List from './templates/List';
 
 function App() {
   return (
-    <Grid sx={{backgroundColor: "#111", height: '100vh', padding: 2}}>
+    <Grid sx={{backgroundColor: "#30503a", height: '100vh', padding: 2}}>
       <List/>
     </Grid>
   );

@@ -2,6 +2,7 @@ import { Divider, Grid, Paper } from "@mui/material";
 import { DataGrid } from '@mui/x-data-grid';
 import useGetList from "../../hooks/useGetList";
 import useColumns from "../../hooks/useColumns";
+import ButtonNewScheduling from "../../components/ButtonNewScheduling";
 
 
 export default function List(){
@@ -13,7 +14,7 @@ export default function List(){
     return (
         <Paper sx={{ maxHeight: "60vh" }}>
         <Grid sx={{display: 'flex', justifyContent: "flex-end", padding: 2}}>
-            {/* <ButtonNew handleModal={handleModal}/> */}
+            <ButtonNewScheduling/>
         </Grid>
         <Divider/>
         <DataGrid
