@@ -8,15 +8,19 @@ import List from './templates/List';
 import BasicModal from './templates/Modal';
 import ModalScheduling from './components/ModalScheduling';
 import ModalExamsList from './components/ModalExamsList';
-
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers';
 
 function App() {
   return (
-    <Grid sx={{backgroundColor: "#30503a", height: '100vh', padding: 2}}>
-      <List/>
-      <ModalScheduling/>
-      <ModalExamsList/>
-    </Grid>
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <Grid sx={{backgroundColor: "#30503a", height: '100vh', padding: 2}}>
+        <List/>
+        <ModalScheduling/>
+        <ModalExamsList/>
+      </Grid>
+    </LocalizationProvider>
+
   );
 }
 
