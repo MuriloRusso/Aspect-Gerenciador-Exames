@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
 const style = {
-  position: 'absolute',
+  position: 'absolute' as const,
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
@@ -17,11 +17,12 @@ const style = {
 };
 
 type ModalProps = {
-    open: boolean;
-    handleClose: () => void;
-}
+  open: boolean;
+  handleClose: () => void;
+  children?: React.ReactNode;
+};
 
-export default function BasicModal({open, handleClose}:ModalProps) {
+export default function BasicModal({ open, handleClose, children }: ModalProps) {
   return (
     <div>
       <Modal
@@ -31,12 +32,7 @@ export default function BasicModal({open, handleClose}:ModalProps) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          {children}
         </Box>
       </Modal>
     </div>
