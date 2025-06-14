@@ -3,7 +3,18 @@ import { AppDataSource } from "./data-source";
 import { cadExam } from "./entity/Exam";
 import { cadScheduling } from "./entity/Scheduling";
 
+const cors = require('cors');
+
 const app = express();
+ 
+// Habilita CORS para todas as origens
+app.use(cors());
+
+// ou, para permitir só o frontend
+app.use(cors({
+  origin: 'http://localhost:3001'
+}));
+
 app.use(express.json());
 
 AppDataSource.initialize().then(() => {

@@ -6,11 +6,14 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { Grid } from '@mui/material';
+import List from './templates/List';
 
 
 function App() {
   return (
-    <Grid sx={{backgroundColor: "#111", height: '100vh'}}></Grid>
+    <Grid sx={{backgroundColor: "#111", height: '100vh'}}>
+      <List/>
+    </Grid>
   );
 }
 

@@ -1,19 +1,18 @@
 import { useEffect, useState } from 'react';
-import api from '../../../../services/api';
-import { Client } from '../../../../types/client';
-
-
+import { Scheduling } from '../../types/scheduling';
+import api from '../../services/api';
 export default function useGetList() {
-
-    const [ rows, setRows ] = useState<Client[]>([]);
-
+    const [ rows, setRows ] = useState<Scheduling[]>([]);
     useEffect(() => {
-    api.get('/clients/get.php'/*, { params: { search } }*/)
-        .then(response => setRows(response.data.data))
+    api.get('/scheduling')
+        .then(response =>setRows(response.data))
         .catch(error => console.error(error));
-    // }, [search]);
     }, []);
 
+    useEffect(() => {
+        console.log('rows');
 
+        console.log(rows);
+    }, [rows]);
     return { rows };
 }
