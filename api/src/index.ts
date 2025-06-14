@@ -9,7 +9,7 @@ app.use(express.json());
 AppDataSource.initialize().then(() => {
   console.log("📦 Banco de dados conectado com sucesso!");
 
-  app.get("/exams", async (req, res) => {
+  app.get("/exam", async (req, res) => {
     const exams = await AppDataSource.getRepository(cadExam).find();
     res.json(exams);
   });
