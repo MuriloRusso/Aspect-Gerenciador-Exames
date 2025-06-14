@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { Grid } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 
 const style = {
   position: 'absolute' as const,
@@ -20,12 +22,14 @@ const style = {
 type ModalProps = {
   open: boolean;
   handleClose: () => void;
+  title: string;
   children?: React.ReactNode;
 };
 
-export default function BasicModal({ open, handleClose, children }: ModalProps) {
+export default function BasicModal({ open, handleClose, title, children }: ModalProps) {
   return (
     <div>
+
       <Modal
         open={open}
         onClose={handleClose}
@@ -33,6 +37,12 @@ export default function BasicModal({ open, handleClose, children }: ModalProps) 
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          <Grid sx={{display: 'flex', flexDirection: 'row', justifyContent: "space-between"}}>
+            <Typography variant="h5" component="h5">{title}</Typography>
+            <Button onClick={handleClose}>
+              <CloseIcon color='action'/>
+            </Button>
+          </Grid>
           {children}
         </Box>
       </Modal>

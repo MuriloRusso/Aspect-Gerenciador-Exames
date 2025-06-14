@@ -6,8 +6,7 @@ import ExamList from "../../templates/ExamList";
 export default function ModalExamsList(){
     const { modalExamsOpen, toogleModalExamsList } = useModals();
     return (
-        <BasicModal open={modalExamsOpen} handleClose={toogleModalExamsList}>
-            <Typography variant="h5" component="h5">Exames</Typography>
+        <BasicModal open={modalExamsOpen} handleClose={toogleModalExamsList} title="Exames">
             <ExamList/>
         </BasicModal>
     )
