@@ -1,10 +1,10 @@
 // src/routes/usuario.routes.ts
 import { Router } from "express";
 import { AppDataSource } from "../data-source";
-import { Scheduling } from "../entity/Scheduling";
+import { cadScheduling } from "../entity/Scheduling";
 
 const router = Router();
-const repo = AppDataSource.getRepository(Scheduling);
+const repo = AppDataSource.getRepository(cadScheduling);
 
 router.get("/", async (req, res) => {
   const schedulings = await repo.find();

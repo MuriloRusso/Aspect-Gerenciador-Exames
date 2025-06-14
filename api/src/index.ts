@@ -1,7 +1,7 @@
 import express from "express";
 import { AppDataSource } from "./data-source";
-import { Exam } from "./entity/Exam";
-import { Scheduling } from "./entity/Scheduling";
+import { cadExam } from "./entity/Exam";
+import { cadScheduling } from "./entity/Scheduling";
 
 const app = express();
 app.use(express.json());
@@ -10,17 +10,17 @@ AppDataSource.initialize().then(() => {
   console.log("📦 Banco de dados conectado com sucesso!");
 
   app.get("/exams", async (req, res) => {
-    const exams = await AppDataSource.getRepository(Exam).find();
+    const exams = await AppDataSource.getRepository(cadExam).find();
     res.json(exams);
   });
 
   app.get("/scheduling", async (req, res) => {
-    const scheduling = await AppDataSource.getRepository(Scheduling).find();
+    const scheduling = await AppDataSource.getRepository(cadScheduling).find();
     res.json(scheduling);
   });
 
   app.post("/scheduling", async (req, res) => {
-    const repo = AppDataSource.getRepository(Scheduling);
+    const repo = AppDataSource.getRepository(cadScheduling);
     const newScheduling = repo.create(req.body);
     const result = await repo.save(newScheduling);
     res.status(201).json(result);

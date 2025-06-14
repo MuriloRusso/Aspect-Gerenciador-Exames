@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { Exam } from "./entity/Exam";       // ajuste o caminho
-import { Scheduling } from "./entity/Scheduling"; // ajuste o caminho
+import { cadExam } from "./entity/Exam";       // ajuste o caminho
+import { cadScheduling } from "./entity/Scheduling"; // ajuste o caminho
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -12,7 +12,7 @@ export const AppDataSource = new DataSource({
   database: "aspect",
   synchronize: true,
   logging: false,
-  entities: [Exam, Scheduling],
+  entities: [cadExam, cadScheduling],
   migrations: [],
   subscribers: [],
 });
