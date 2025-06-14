@@ -7,6 +7,7 @@ import { Grid } from '@mui/material';
 import List from './templates/List';
 import BasicModal from './templates/Modal';
 import ModalScheduling from './components/ModalScheduling';
+import ModalExamsList from './components/ModalExamsList';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     <Grid sx={{backgroundColor: "#30503a", height: '100vh', padding: 2}}>
       <List/>
       <ModalScheduling/>
+      <ModalExamsList/>
     </Grid>
   );
 }

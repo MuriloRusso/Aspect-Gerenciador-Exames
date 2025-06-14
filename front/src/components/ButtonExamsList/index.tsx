@@ -1,6 +1,8 @@
+import useModals from "../../hooks/useModals";
 import ButtonPrimary from "../ButtonPrimary";
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 
 export default function ButtonExamsList(){
-    return <ButtonPrimary value="Exames" Icon={DescriptionOutlinedIcon} />
+    const { toogleModalExamsList } = useModals();
+    return <ButtonPrimary value="Exames" Icon={DescriptionOutlinedIcon} onClick={toogleModalExamsList} />
 }

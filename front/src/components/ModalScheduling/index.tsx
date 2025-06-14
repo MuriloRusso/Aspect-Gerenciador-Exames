@@ -3,9 +3,9 @@ import BasicModal from "../../templates/Modal";
 import useModals from "../../hooks/useModals";
 
 export default function ModalScheduling(){
-    const { modalschedulingOpen, toogleModalscheduling } = useModals();
+    const { modalSchedulingOpen, toogleModalScheduling } = useModals();
     return (
-        <BasicModal open={modalschedulingOpen} handleClose={toogleModalscheduling}>
+        <BasicModal open={modalSchedulingOpen} handleClose={toogleModalScheduling}>
             <Typography variant="h5" component="h5">Novo Agendamento</Typography>
         </BasicModal>
     )
