@@ -1,17 +1,21 @@
 import { createContext, useState, ReactNode } from 'react';
 
 type GlobalContextType = {
-  modalShedulingOpen: boolean;
-  setModalShedulingOpen: (value: boolean) => void;
+  modalschedulingOpen: boolean;
+  setModalschedulingOpen: (value: boolean) => void;
+  modalExamsOpen: boolean;
+  setModalExamsOpen: (value: boolean) => void;
 };
 
 export const GlobalContext = createContext<GlobalContextType>({} as GlobalContextType);
 
 export const GlobalProvider = ({ children }: { children: ReactNode }) => {
-  const [modalShedulingOpen, setModalShedulingOpen] = useState<boolean>(false);
+  const [modalschedulingOpen, setModalschedulingOpen] = useState<boolean>(false);
+  const [modalExamsOpen, setModalExamsOpen] = useState<boolean>(false);
+
 
   return (
-    <GlobalContext.Provider value={{ modalShedulingOpen, setModalShedulingOpen }}>
+    <GlobalContext.Provider value={{ modalschedulingOpen, setModalschedulingOpen, modalExamsOpen, setModalExamsOpen }}>
       {children}
     </GlobalContext.Provider>
   );
