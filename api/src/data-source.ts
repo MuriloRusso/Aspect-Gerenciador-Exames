@@ -1,6 +1,8 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { Usuario } from "./entity/Usuario"; // ajuste para o caminho correto
+import { Usuario } from "./entity/Usuario";
+import { CadExam } from "./entity/Exam";       // ajuste o caminho
+import { CadScheduling } from "./entity/Scheduling"; // ajuste o caminho
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -9,9 +11,9 @@ export const AppDataSource = new DataSource({
   username: "root",
   password: "root",
   database: "aspect",
-  synchronize: true, // cuidado em produção, pois isso altera as tabelas automaticamente
+  synchronize: true,
   logging: false,
-  entities: [Usuario],
+  entities: [Usuario, CadExam, CadScheduling],
   migrations: [],
   subscribers: [],
 });

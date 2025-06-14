@@ -1,5 +1,5 @@
 // src/entity/Usuario.ts
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class Usuario {
@@ -12,3 +12,8 @@ export class Usuario {
   @Column()
   email!: string;
 }
+
+
+
+
+
