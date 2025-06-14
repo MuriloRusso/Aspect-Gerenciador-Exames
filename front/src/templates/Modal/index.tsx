@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { Grid } from '@mui/material';
+import { Divider, Grid } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
 const style = {
@@ -43,6 +43,7 @@ export default function BasicModal({ open, handleClose, title, children }: Modal
               <CloseIcon color='action'/>
             </Button>
           </Grid>
+          <Divider/>
           {children}
         </Box>
       </Modal>
