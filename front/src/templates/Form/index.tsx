@@ -1,11 +1,13 @@
 import { Grid } from "@mui/material";
-import InputDateTime from "../../components/InputDateTime";
+import InputDate from "../../components/InputDate";
 import InputExam from "../../components/InputExam";
+import InputTime from "../../components/InputTime";
 
 export default function Form(){
     return(
         <Grid sx={{display: 'flex', flexDirection: "row", gap: 5, paddingY: 2, justifyContent: "center"}}>
-            <InputDateTime/>
+            <InputDate/>
+            <InputTime />
             <InputExam/>
         </Grid>
     )

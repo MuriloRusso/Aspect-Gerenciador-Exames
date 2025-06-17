@@ -1,22 +1,22 @@
-import { DatePicker } from '@mui/x-date-pickers';
+import { TimePicker } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { ptBR } from 'date-fns/locale';
 import { SchedulingData } from "../../types/scheduling";
 
-type CustomDatePickerProps = {
+type CustomTimePickerProps = {
   state: SchedulingData["data"];
   onChange: (newValue: Date | null) => void;
 }
 
-export default function CustomDatePicker({ state, onChange }: CustomDatePickerProps) {
-  const dateValue = state.value ? new Date(state.value) : null;
+export default function CustomTimePicker({ state, onChange }: CustomTimePickerProps) {
+  const timeValue = state.value ? new Date(state.value) : null;
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ptBR}>
-      <DatePicker
+      <TimePicker
         label={state.label}
-        value={dateValue}
+        value={timeValue}
         onChange={onChange}
       />
     </LocalizationProvider>

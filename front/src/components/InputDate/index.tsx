@@ -1,7 +1,7 @@
 import useFields from "../../hooks/useFields";
 import CustomDatePicker from "../DatePicker";
 
-export default function InputDateTime() {
+export default function InputDate() {
   const { schedulingData, handleChangeSchedulingData } = useFields();
   return (
     <CustomDatePicker
