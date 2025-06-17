@@ -11,9 +11,6 @@ export class cadScheduling {
   @JoinColumn({ name: "id_exam" })
   exam!: cadExam;
 
-  @Column()
-  specialty!: string;
-
   @Column({ type: "timestamp" })
   date_time!: Date;
 
