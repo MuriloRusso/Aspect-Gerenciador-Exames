@@ -5,7 +5,7 @@ import { ptBR } from 'date-fns/locale';
 import { SchedulingData } from "../../types/scheduling";
 
 type CustomTimePickerProps = {
-  state: SchedulingData["data"];
+  state: SchedulingData["time"];
   onChange: (newValue: Date | null) => void;
 }
 

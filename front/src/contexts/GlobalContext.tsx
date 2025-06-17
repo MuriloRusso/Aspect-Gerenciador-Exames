@@ -15,9 +15,26 @@ export const GlobalContext = createContext<GlobalContextType>({} as GlobalContex
 export const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const [modalSchedulingOpen, setmodalSchedulingOpen] = useState<boolean>(false);
   const [modalExamsOpen, setModalExamsOpen] = useState<boolean>(false);
+
+  function timeStringToDate(time: string): Date {
+    const [h, m, s] = time.split(':').map(Number);
+    const date = new Date();
+    date.setHours(h, m, s, 0);
+    return date;
+  }
+
+
   const [ schedulingData, setSchedulingData ] = useState<SchedulingData>({
     data: {
       value: "2025-01-01",
+      error: false,
+      errorText: "Campo Obrigatório",
+      label: "Data",
+      placeholder: "Seleciona a Data",
+      required: true
+    },
+    time: {
+      value: timeStringToDate("00:00:00").toString(),
       error: false,
       errorText: "Campo Obrigatório",
       label: "Data",
@@ -34,7 +51,7 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
           modalExamsOpen,
           setModalExamsOpen,
           schedulingData,
-          setSchedulingData
+          setSchedulingData,
         }
       }>
       {children}

@@ -5,9 +5,9 @@ export default function InputTime() {
   const { schedulingData, handleChangeSchedulingData } = useFields();
   return (
     <CustomTimePicker
-      state={schedulingData.data}
+      state={schedulingData.time}
       onChange={(newTime) =>
-        handleChangeSchedulingData("data", newTime ? newTime.toISOString() : "")
+        handleChangeSchedulingData("time", newTime ? newTime.toISOString() : "")
       }
     />
   );

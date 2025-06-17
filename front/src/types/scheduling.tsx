@@ -11,5 +11,6 @@ export type Scheduling = {
 }
 
 export type SchedulingData = {
-    data: inputProps
+    data: inputProps;
+    time: inputProps;
 }
