@@ -3,11 +3,11 @@ import { SchedulingData } from '../types/scheduling';
 
 type GlobalContextType = {
   modalSchedulingOpen: boolean;
-  setmodalSchedulingOpen: (value: boolean) => void;
+  setmodalSchedulingOpen: React.Dispatch<React.SetStateAction<boolean>>
   modalExamsOpen: boolean;
-  setModalExamsOpen: (value: boolean) => void;
+  setModalExamsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   schedulingData: SchedulingData;
-  setSchedulingData: (value:SchedulingData) => void;
+  setSchedulingData: React.Dispatch<React.SetStateAction<SchedulingData>>
 };
 
 export const GlobalContext = createContext<GlobalContextType>({} as GlobalContextType);
