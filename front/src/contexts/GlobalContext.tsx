@@ -23,10 +23,9 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     return date;
   }
 
-
   const [ schedulingData, setSchedulingData ] = useState<SchedulingData>({
     data: {
-      value: "2025-01-01",
+      value: "",
       error: false,
       errorText: "Campo Obrigatório",
       label: "Data",
@@ -37,7 +36,7 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
       value: timeStringToDate("00:00:00").toString(),
       error: false,
       errorText: "Campo Obrigatório",
-      label: "Data",
+      label: "Horário",
       placeholder: "Seleciona a Data",
       required: true
     }
