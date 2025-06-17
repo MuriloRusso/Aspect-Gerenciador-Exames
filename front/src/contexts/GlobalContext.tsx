@@ -17,7 +17,7 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const [modalExamsOpen, setModalExamsOpen] = useState<boolean>(false);
   const [ schedulingData, setSchedulingData ] = useState<SchedulingData>({
     data: {
-      value: "",
+      value: "2025-01-01",
       error: false,
       errorText: "Campo Obrigatório",
       label: "Data",

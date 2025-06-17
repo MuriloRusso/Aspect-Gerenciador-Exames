@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { SchedulingData } from "../../types/scheduling";
 
@@ -15,9 +15,11 @@ export default function useFields(){
             }
         }))
     }
-
-    // handleChange
-
+    useEffect(()=>{
+        console.log('schedulingData');
+        console.log(schedulingData);
+        
+    }, [schedulingData])
 
     return { schedulingData, handleChangeSchedulingData }
 }
