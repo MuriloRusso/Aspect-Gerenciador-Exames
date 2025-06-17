@@ -20,7 +20,6 @@ export default function useFields(){
     useEffect(()=>{
         console.log('schedulingData');
         console.log(schedulingData);
-        
     }, [schedulingData])
 
     return { schedulingData, handleChangeSchedulingData }
