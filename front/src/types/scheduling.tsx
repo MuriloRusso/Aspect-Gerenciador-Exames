@@ -1,3 +1,5 @@
+import { inputProps } from "./input";
+
 export type Scheduling = {
     id: number;
     id_exam: number;
@@ -6,4 +8,8 @@ export type Scheduling = {
     informations: string;
     created_at: string;
     updated_at: string;
+}
+
+export type SchedulingData = {
+    data: inputProps
 }
