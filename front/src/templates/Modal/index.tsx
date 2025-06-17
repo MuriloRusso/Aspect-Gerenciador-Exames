@@ -37,7 +37,7 @@ export default function BasicModal({ open, handleClose, title, children }: Modal
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Grid sx={{display: 'flex', flexDirection: 'row', justifyContent: "space-between"}}>
+          <Grid sx={{display: 'flex', flexDirection: 'row', justifyContent: "space-between", paddingBottom: 1}}>
             <Typography variant="h5" component="h5">{title}</Typography>
             <Button onClick={handleClose}>
               <CloseIcon color='action'/>
