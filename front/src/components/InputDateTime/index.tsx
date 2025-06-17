@@ -3,14 +3,9 @@ import CustomDatePicker from "../DatePicker";
 
 export default function InputDateTime() {
   const { schedulingData, handleChangeSchedulingData } = useFields();
-
-  const dateValue = schedulingData.data.value
-    ? new Date(schedulingData.data.value)
-    : null;
-
   return (
     <CustomDatePicker
-      value={dateValue}
+      state={schedulingData.data}
       onChange={(newDate) =>
         handleChangeSchedulingData("data", newDate ? newDate.toISOString() : "")
       }
