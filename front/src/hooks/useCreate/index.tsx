@@ -3,11 +3,13 @@ import api from '../../services/api';
 import { setHours, setMinutes, setSeconds } from 'date-fns';
 import useModals from "../useModals";
 import useGetList from "../useGetList";
+import useToast from "../useToast";
 
 export default function useCreate() {
   const { schedulingData } = useFields();
   const { toogleModalScheduling } = useModals();
   const { getAll } = useGetList();
+  const { addToast } = useToast();
 
   const create = () => {
     const date = new Date(schedulingData.data.value); // já é uma string ISO
@@ -29,8 +31,14 @@ export default function useCreate() {
       .then(response => {
         console.log(response.data);
         toogleModalScheduling();
+        addToast({
+          id: 0,
+          severity: 'success',
+          text: 'Agendamento feito com sucesso!',
+          variant: "filled"
+        });
         getAll();
-        })
+      })
       .catch(error => console.error(error));
 
     console.log("Data final enviada:", json);
