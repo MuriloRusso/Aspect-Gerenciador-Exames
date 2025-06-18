@@ -1,39 +1,40 @@
-import { Divider, Grid, Paper } from "@mui/material";
+import { Divider, Grid, Paper, Skeleton } from "@mui/material";
 import { DataGrid } from '@mui/x-data-grid';
 import useGetList from "../../hooks/useGetList";
 import useColumns from "../../hooks/useColumns";
 import ButtonNewScheduling from "../../components/ButtonNewScheduling";
 import ButtonExamsList from "../../components/ButtonExamsList";
 import { useEffect } from "react";
+import useLoading from "../../hooks/useLoading";
 
+export default function List() {
+  const paginationModel = { page: 0, pageSize: 10 };
+  const { rows } = useGetList();
+  const { columns } = useColumns();
+  const { loading } = useLoading();
 
-export default function List(){
-    const paginationModel = { page: 0, pageSize: 10 };
+  useEffect(() => {
+    console.log('rows data Grid');
+    console.log(rows);
+  }, [rows]);
 
-    const { rows } = useGetList();
-    const { columns } = useColumns();
-
-    useEffect(()=> {
-        console.log('rows data Grid');
-        console.log(rows);
-        
-    }, [rows])
-
-    return (
-        <Paper sx={{ maxHeight: "60vh" }}>
-        <Grid sx={{display: 'flex', justifyContent: "flex-end", padding: 2, gap: 2}}>
-            <ButtonExamsList/>
-            <ButtonNewScheduling/>
+  return (
+      <Paper sx={{ maxHeight: "60vh" }}>
+        <Grid sx={{ display: 'flex', justifyContent: "flex-end", padding: 2, gap: 2 }}>
+          { loading ? <Skeleton variant="rounded" width='107px' height="40px" /> : <ButtonExamsList />}
+          { loading ? <Skeleton variant="rounded" width='200' height="40px" /> : <ButtonNewScheduling />}
         </Grid>
-        <Divider/>
-        <DataGrid
-            rows={rows}
-            columns={columns}
-            initialState={{ pagination: { paginationModel } }}
-            pageSizeOptions={[5, 10, 20]}
-            checkboxSelection
-            localeText={
-                {
+        <Divider />
+        {loading ? (
+        <Skeleton variant="rectangular" width="100%" height="60vh" />
+            ) : (
+                <DataGrid
+                rows={rows}
+                columns={columns}
+                initialState={{ pagination: { paginationModel } }}
+                pageSizeOptions={[5, 10, 20]}
+                checkboxSelection
+                localeText={{
                     noRowsLabel: 'Sem linhas',
                     columnMenuHideColumn: "Ocultar Coluna",
                     columnsManagementNoColumns: "Gerenciar Colunas",
@@ -43,15 +44,15 @@ export default function List(){
                     columnMenuFilter: "Filtro",
                     columnHeaderSortIconLabel: "Organizar",
                     filterOperatorContains: "Contém",
-                    filterOperatorDoesNotContain: "Não Contem",
+                    filterOperatorDoesNotContain: "Não Contém",
                     filterOperatorEquals: "Igual",
                     filterOperatorDoesNotEqual: "Não é igual",
                     filterOperatorStartsWith: "Começa com",
                     filterOperatorEndsWith: "Termina com",
-                    filterOperatorIsEmpty: "Está vázio",
-                    filterOperatorIsNotEmpty: "Não está vázio",
+                    filterOperatorIsEmpty: "Está vazio",
+                    filterOperatorIsNotEmpty: "Não está vazio",
                     filterOperatorIsAnyOf: "Qualquer um",
-                    columnMenuShowColumns: "Mostar Coluna",
+                    columnMenuShowColumns: "Mostrar Coluna",
                     columnsManagementReset: "Resetar",
                     columnsManagementShowHideAllText: "Ocultar/Exibir",
                     columnsManagementSearchTitle: "Buscar",
@@ -61,30 +62,30 @@ export default function List(){
                     filterPanelInputPlaceholder: "Valor do filtro",
                     paginationRowsPerPage: "Itens por página",
                     paginationDisplayedRows(params) {
-                        return params.from + '-' + params.to + ' de ' + params.count
+                    return `${params.from}-${params.to} de ${params.count}`;
                     },
                     footerRowSelected(params) {
-                        return  params + " Itens selecionados"
+                    return `${params} Itens selecionados`;
                     },
                     paginationItemAriaLabel(type) {
-                        switch (type) {
-                            case 'next':
-                            return 'Próxima Página';
-                            case 'previous':
-                            return 'Página Anterior';
-                            case 'first':
-                            return 'Primeira Página';
-                            case 'last':
-                            return 'Última Página';
-                            default:
-                            return `Página ${type}`;
-                        }
+                    switch (type) {
+                        case 'next':
+                        return 'Próxima Página';
+                        case 'previous':
+                        return 'Página Anterior';
+                        case 'first':
+                        return 'Primeira Página';
+                        case 'last':
+                        return 'Última Página';
+                        default:
+                        return `Página ${type}`;
                     }
-
-                }
-            }
-            sx={{ border: 0 }}
-        />
-        </Paper>
-    )
+                    },
+                }}
+                sx={{ border: 0 }}
+                />
+            )
+        }
+    </Paper>
+  );
 }

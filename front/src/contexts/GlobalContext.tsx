@@ -1,4 +1,4 @@
-import { createContext, useState, ReactNode } from 'react';
+import { createContext, useState, ReactNode, useEffect } from 'react';
 import { Scheduling, SchedulingData } from '../types/scheduling';
 import { ToastProps } from '../types/toast';
 
@@ -26,13 +26,14 @@ export const GlobalContext = createContext<GlobalContextType>({} as GlobalContex
 
 export const GlobalProvider = ({ children }: { children: ReactNode }) => {
   
-  const [ loading, setLoading ] = useState<boolean>(false);
+  const [ loading, setLoading ] = useState<boolean>(true);
   const [ rows, setRows ] = useState<Scheduling[]>([]);
   const [selectedScheduling, setSelectedScheduling] = useState<Scheduling | null>(null);
   const [modalSchedulingOpen, setModalSchedulingOpen] = useState<boolean>(false);
   const [modalDeleteSchedulingOpen, setModalDeleteSchedulingOpen] = useState<boolean>(false);
   const [modalExamsOpen, setModalExamsOpen] = useState<boolean>(false);
   const [toasts, setToasts] = useState<ToastProps[]>([]);
+
 
   function timeStringToDate(time: string): Date {
     const [h, m, s] = time.split(':').map(Number);
