@@ -1,14 +1,15 @@
+import { Exam } from "./exam";
 import { inputProps } from "./input";
 
 export type Scheduling = {
-    id: number;
-    id_exam: number;
-    speciality: string;
-    date_time: string;
-    informations: string;
-    created_at: string;
-    updated_at: string;
-}
+  id: number;
+  exam: Exam;
+  date_time: string;
+  informations: string;
+  created_at: string;
+  updated_at: string;
+};
+
 
 export type SchedulingData = {
     data: inputProps;
