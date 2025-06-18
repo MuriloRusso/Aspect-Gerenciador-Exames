@@ -4,14 +4,37 @@ import { setHours, setMinutes, setSeconds } from 'date-fns';
 import useModals from "../useModals";
 import useGetList from "../useGetList";
 import useToast from "../useToast";
+import { SchedulingData } from "../../types/scheduling";
 
 export default function useCreate() {
   const { schedulingData } = useFields();
   const { toogleModalScheduling } = useModals();
   const { getAll } = useGetList();
-  const { addToast } = useToast();
+  const { addToast } = useToast(); 
+  const { handleChangeSchedulingData } = useFields();
+
+  const validateFields = (): boolean => {
+    let isValid = true;
+    for (const key of Object.keys(schedulingData) as (keyof SchedulingData)[]) {
+      const field = schedulingData[key];
+      if (field.required && !field.value) {
+        addToast({
+          id: Math.random(), // garante ID único
+          severity: 'error',
+          text: `O campo ${field.label} é obrigatório.`,
+          variant: 'filled'
+        });
+        handleChangeSchedulingData(key, "");
+        isValid = false;
+      }
+    }
+    return isValid;
+  };
+
 
   const create = () => {
+    if (!validateFields()) return;
+
     const date = new Date(schedulingData.data.value);
     const time = new Date(schedulingData.time.value);
 
@@ -32,17 +55,25 @@ export default function useCreate() {
         console.log(response.data);
         toogleModalScheduling();
         addToast({
-          id: 0,
+          id: 1,
           severity: 'success',
           text: 'Agendamento feito com sucesso!',
           variant: "filled"
         });
         getAll();
       })
-      .catch(error => console.error(error));
+      .catch(error => {
+        console.error(error);
+        addToast({
+          id: 2,
+          severity: 'error',
+          text: 'Erro ao agendar. Tente novamente.',
+          variant: "filled"
+        });
+      });
 
     console.log("Data final enviada:", json);
-  }
+  };
 
   return { create };
 }

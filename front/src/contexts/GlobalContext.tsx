@@ -48,7 +48,8 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
       required: true
     },
     time: {
-      value: timeStringToDate("00:00:00").toString(),
+      // value: timeStringToDate("00:00:00").toString(),
+      value: "",
       error: false,
       errorText: "Campo Obrigatório",
       label: "Horário",
