@@ -1,7 +1,7 @@
-import useCreate from "../../hooks/useCreate";
+import useDelete from "../../hooks/useDelete";
 import ButtonPrimary from "../ButtonPrimary";
 
 export default function ButtonDeleteSchuduling(){
-    const { create } = useCreate();
-    return <ButtonPrimary value="Agendar" onClick={create} />
+    const { drop } = useDelete();
+    return <ButtonPrimary value="Excluir" onClick={drop} />
 }

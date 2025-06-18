@@ -12,8 +12,8 @@ export default function useCreate() {
   const { addToast } = useToast();
 
   const create = () => {
-    const date = new Date(schedulingData.data.value); // já é uma string ISO
-    const time = new Date(schedulingData.time.value); // também é uma string ISO
+    const date = new Date(schedulingData.data.value);
+    const time = new Date(schedulingData.time.value);
 
     const hour = time.getHours();
     const minute = time.getMinutes();
