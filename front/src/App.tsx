@@ -10,6 +10,7 @@ import ModalScheduling from './components/ModalScheduling';
 import ModalExamsList from './components/ModalExamsList';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers';
+import Toast from './components/Toast';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <List/>
         <ModalScheduling/>
         <ModalExamsList/>
+        <Toast/>
       </Grid>
     </LocalizationProvider>
 

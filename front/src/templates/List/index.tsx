@@ -4,6 +4,7 @@ import useGetList from "../../hooks/useGetList";
 import useColumns from "../../hooks/useColumns";
 import ButtonNewScheduling from "../../components/ButtonNewScheduling";
 import ButtonExamsList from "../../components/ButtonExamsList";
+import { useEffect } from "react";
 
 
 export default function List(){
@@ -11,6 +12,12 @@ export default function List(){
 
     const { rows } = useGetList();
     const { columns } = useColumns();
+
+    useEffect(()=> {
+        console.log('rows');
+        console.log(rows);
+        
+    }, [rows])
 
     return (
         <Paper sx={{ maxHeight: "60vh" }}>

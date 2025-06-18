@@ -1,5 +1,6 @@
 import { createContext, useState, ReactNode } from 'react';
 import { SchedulingData } from '../types/scheduling';
+import { ToastProps } from '../types/toast';
 
 type GlobalContextType = {
   modalSchedulingOpen: boolean;
@@ -8,6 +9,8 @@ type GlobalContextType = {
   setModalExamsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   schedulingData: SchedulingData;
   setSchedulingData: React.Dispatch<React.SetStateAction<SchedulingData>>
+  toasts: ToastProps[];
+  setToasts: React.Dispatch<React.SetStateAction<ToastProps[]>>
 };
 
 export const GlobalContext = createContext<GlobalContextType>({} as GlobalContextType);
@@ -15,6 +18,8 @@ export const GlobalContext = createContext<GlobalContextType>({} as GlobalContex
 export const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const [modalSchedulingOpen, setmodalSchedulingOpen] = useState<boolean>(false);
   const [modalExamsOpen, setModalExamsOpen] = useState<boolean>(false);
+
+  const [toasts, setToasts] = useState<ToastProps[]>([]);
 
   function timeStringToDate(time: string): Date {
     const [h, m, s] = time.split(':').map(Number);
@@ -51,6 +56,8 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
           setModalExamsOpen,
           schedulingData,
           setSchedulingData,
+          toasts,
+          setToasts
         }
       }>
       {children}
