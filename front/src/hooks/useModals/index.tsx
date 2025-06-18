@@ -2,9 +2,9 @@ import { useContext } from "react"
 import { GlobalContext } from "../../contexts/GlobalContext";
 
 export default function useModals(){
-    const { modalSchedulingOpen, setmodalSchedulingOpen, modalExamsOpen, setModalExamsOpen } = useContext(GlobalContext);
+    const { modalSchedulingOpen, setModalSchedulingOpen, modalExamsOpen, setModalExamsOpen } = useContext(GlobalContext);
     const toogleModalScheduling = () => {
-        setmodalSchedulingOpen(!modalSchedulingOpen);
+        setModalSchedulingOpen(!modalSchedulingOpen);
     }
     const toogleModalExamsList = () => {
         setModalExamsOpen(!modalExamsOpen);

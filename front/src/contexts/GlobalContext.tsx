@@ -4,21 +4,23 @@ import { ToastProps } from '../types/toast';
 
 type GlobalContextType = {
   modalSchedulingOpen: boolean;
-  setmodalSchedulingOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setModalSchedulingOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  modalDeleteSchedulingOpen: boolean;
+  setModalDeleteSchedulingOpen: React.Dispatch<React.SetStateAction<boolean>>;
   modalExamsOpen: boolean;
   setModalExamsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   schedulingData: SchedulingData;
-  setSchedulingData: React.Dispatch<React.SetStateAction<SchedulingData>>
+  setSchedulingData: React.Dispatch<React.SetStateAction<SchedulingData>>;
   toasts: ToastProps[];
-  setToasts: React.Dispatch<React.SetStateAction<ToastProps[]>>
+  setToasts: React.Dispatch<React.SetStateAction<ToastProps[]>>;
 };
 
 export const GlobalContext = createContext<GlobalContextType>({} as GlobalContextType);
 
 export const GlobalProvider = ({ children }: { children: ReactNode }) => {
-  const [modalSchedulingOpen, setmodalSchedulingOpen] = useState<boolean>(false);
+  const [modalSchedulingOpen, setModalSchedulingOpen] = useState<boolean>(false);
+  const [modalDeleteSchedulingOpen, setModalDeleteSchedulingOpen] = useState<boolean>(false);
   const [modalExamsOpen, setModalExamsOpen] = useState<boolean>(false);
-
   const [toasts, setToasts] = useState<ToastProps[]>([]);
 
   function timeStringToDate(time: string): Date {
@@ -51,13 +53,15 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     <GlobalContext.Provider value={
         {
           modalSchedulingOpen,
-          setmodalSchedulingOpen,
+          setModalSchedulingOpen,
           modalExamsOpen,
           setModalExamsOpen,
           schedulingData,
           setSchedulingData,
           toasts,
-          setToasts
+          setToasts,
+          modalDeleteSchedulingOpen,
+          setModalDeleteSchedulingOpen
         }
       }>
       {children}
