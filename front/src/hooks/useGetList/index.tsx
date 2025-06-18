@@ -21,10 +21,5 @@ export default function useGetList() {
       console.log('fim getAll');
     }
   };
-
-  useEffect(() => {
-    getAll(); // ← agora a função é realmente executada
-  }, []);
-
   return { rows, getAll };
 }

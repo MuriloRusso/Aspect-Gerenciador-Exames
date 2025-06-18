@@ -12,12 +12,7 @@ export default function List() {
   const { rows } = useGetList();
   const { columns } = useColumns();
   const { loading } = useLoading();
-
-  useEffect(() => {
-    console.log('rows data Grid');
-    console.log(rows);
-  }, [rows]);
-
+  
   return (
       <Paper sx={{ maxHeight: "60vh" }}>
         <Grid sx={{ display: 'flex', justifyContent: "flex-end", padding: 2, gap: 2 }}>

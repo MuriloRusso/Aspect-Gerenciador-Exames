@@ -6,15 +6,21 @@ import Toast from "../../components/Toast";
 import List from "../List";
 import useLoading from "../../hooks/useLoading";
 import { useEffect } from "react";
+import useGetList from "../../hooks/useGetList";
 
 export default function Container(){
     const { loading } = useLoading();
+
+    const { getAll } = useGetList();
+    useEffect(() => {
+        console.log('useeffect getall');        
+        getAll();
+    }, []);
+
+
     return (
         <Grid sx={{backgroundColor: "#30503a", height: '100vh', padding: 2}}>
             <List/>
-            {/* {loading === true ? <Skeleton variant="rectangular" width={'100%'} height={'60vh'}  /> : <List/>} */}
-            {/* {loading === false ? <List/> : <List/>} */}
-
             <ModalScheduling/>
             <ModalDeleteScheduling/>
             <ModalExamsList/>
