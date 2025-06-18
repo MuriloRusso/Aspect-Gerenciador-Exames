@@ -7,8 +7,13 @@ const router = Router();
 const repo = AppDataSource.getRepository(cadExam);
 
 router.get("/", async (req, res) => {
-  const exams = await repo.find();
-  res.json(exams);
+  try {
+    const exams = await repo.find();
+    res.json(exams);
+  } catch (error) {
+    console.error("Erro ao buscar exames:", error);
+    res.status(500).json({ message: "Erro interno ao buscar exames." });
+  }
 });
 
 export default router;

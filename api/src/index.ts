@@ -26,7 +26,9 @@ AppDataSource.initialize().then(() => {
   });
 
   app.get("/scheduling", async (req, res) => {
-    const scheduling = await AppDataSource.getRepository(cadScheduling).find();
+    const scheduling = await AppDataSource.getRepository(cadScheduling).find({
+      relations: ['exam'] // <- ESSENCIAL para trazer o objeto exam junto
+    });
     res.json(scheduling);
   });
 

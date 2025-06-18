@@ -1,6 +1,6 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
-@Entity()
+@Entity("cad_exam") // <- agora o TypeORM sabe o nome certo da tabela
 export class cadExam {
   @PrimaryGeneratedColumn()
   id!: number;
@@ -17,3 +17,4 @@ export class cadExam {
   @UpdateDateColumn({ type: "timestamp" })
   updated_at!: Date;
 }
+

@@ -11,7 +11,7 @@ export default function useColumns() {
         toogleModalDeleteScheduling();
     }
     const columns: GridColDef[] = [
-        // { field: 'id_exam', headerName: 'ID do Exame', width: 350 },
+        { field: 'exam.id', headerName: 'ID do Exame', width: 350 },
         { field: 'informations', headerName: 'Informações', width: 350 },
         { field: 'date_time', headerName: 'Data e Hora', width: 250 },
         { field: 'created_at', headerName: 'Criado', width: 250, },

@@ -19,7 +19,7 @@ export default function useCreate() {
       const field = schedulingData[key];
       if (field.required && !field.value) {
         addToast({
-          id: Math.random(), // garante ID único
+          id: Math.random(),
           severity: 'error',
           text: `O campo ${field.label} é obrigatório.`,
           variant: 'filled'
@@ -45,7 +45,8 @@ export default function useCreate() {
     const fullDateTime = setSeconds(setMinutes(setHours(date, hour), minute), second);
 
     const json = {
-      id_exam: 1,
+      exam: { "id": Number(schedulingData.exam.value) },
+      // id_exam: Number(schedulingData.exam.value) ,
       date_time: fullDateTime.toISOString(),
       informations: "teste"
     };

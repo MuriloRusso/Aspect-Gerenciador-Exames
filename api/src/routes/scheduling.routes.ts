@@ -1,4 +1,4 @@
-// src/routes/usuario.routes.ts
+// src/routes/scheduling.routes.ts (ou o nome da sua rota de agendamento)
 import { Router } from "express";
 import { AppDataSource } from "../data-source";
 import { cadScheduling } from "../entity/Scheduling";
@@ -7,14 +7,22 @@ const router = Router();
 const repo = AppDataSource.getRepository(cadScheduling);
 
 router.get("/", async (req, res) => {
-  const schedulings = await repo.find();
-  res.json(schedulings);
-});
+  try {
 
-router.post("/", async (req, res) => {
-  const scheduling = repo.create(req.body);
-  const resultado = await repo.save(scheduling);
-  res.status(201).json(resultado);
+    console.log('fdsfadadfasfd');
+
+    const schedulings = await repo.find({
+      relations: ['exam'], // <-- Isso carrega os dados do exame relacionado
+    });
+    console.log('fdsfadadfasfd');
+    
+    console.log(schedulings);
+    
+    res.json(schedulings);
+  } catch (error) {
+    console.error("Erro ao buscar agendamentos:", error);
+    res.status(500).json({ message: "Erro ao buscar agendamentos." });
+  }
 });
 
 export default router;
