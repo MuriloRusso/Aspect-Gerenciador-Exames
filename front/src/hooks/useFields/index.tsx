@@ -17,10 +17,19 @@ export default function useFields(){
             }
         }))
     }
-    useEffect(()=>{
-        console.log('schedulingData');
-        console.log(schedulingData);
-    }, [schedulingData])
+    const cleanFields = () => {
+        setSchedulingData(prev => {
+        const cleaned = {} as SchedulingData;
+        for (const key in prev) {
+            cleaned[key as keyof SchedulingData] = {
+            ...prev[key as keyof SchedulingData],
+            value: "",
+            error: false
+            };
+        }
+        return cleaned;
+        });
+    };
 
-    return { schedulingData, handleChangeSchedulingData }
+    return { schedulingData, handleChangeSchedulingData, cleanFields }
 }

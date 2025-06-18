@@ -27,7 +27,7 @@ AppDataSource.initialize().then(() => {
 
   app.get("/scheduling", async (req, res) => {
     const scheduling = await AppDataSource.getRepository(cadScheduling).find({
-      relations: ['exam'] // <- ESSENCIAL para trazer o objeto exam junto
+      relations: ['exam']
     });
     res.json(scheduling);
   });
@@ -52,9 +52,9 @@ AppDataSource.initialize().then(() => {
 
     return res.status(200).json({ message: "Agendamento removido com sucesso." });
   } catch (error) {
-    return res.status(500).json({ message: "Erro ao deletar agendamento.", error });
-  }
-});
+      return res.status(500).json({ message: "Erro ao deletar agendamento.", error });
+    }
+  });
 
 
   app.listen(3000, () => {
