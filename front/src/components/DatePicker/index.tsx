@@ -3,16 +3,15 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { ptBR } from 'date-fns/locale';
 import { SchedulingData } from "../../types/scheduling";
-import { TextField } from '@mui/material';
+import { TextField, TextFieldProps } from '@mui/material';
 
 type CustomDatePickerProps = {
   state: SchedulingData["data"];
   onChange: (newValue: Date | null) => void;
-}
+};
 
 export default function CustomDatePicker({ state, onChange }: CustomDatePickerProps) {
   const dateValue = state.value ? new Date(state.value) : null;
-  const borderColor = "#f00";
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ptBR}>
@@ -20,29 +19,20 @@ export default function CustomDatePicker({ state, onChange }: CustomDatePickerPr
         label={state.label}
         value={dateValue}
         onChange={onChange}
-        // sx={{borderColor: state.error ? borderColor : borderColor,}}
-        enableAccessibleFieldDOMStructure={false}
-        slots={{
-            textField: (params) => (<TextField
-            {...params}
-            sx={{
+        slotProps={{
+          textField: {
+            error: state.error,
+            helperText: state.error ? state.errorText || 'Campo obrigatório' : '',
+            sx: {
               '& .MuiOutlinedInput-root': {
                 '& fieldset': {
-                  borderColor: state.error ? 'red' : '#000',  // cor da borda normal
+                  borderColor: state.error ? 'red' : undefined,
                 },
-                // '&:hover fieldset': {
-                //   borderColor: state.error ? 'darkred' : 'darkgray', // cor ao passar mouse
-                // },
-                // '&.Mui-focused fieldset': {
-                //   borderColor: state.error ? 'red' : 'blue',  // cor quando focado
-                // },
               },
-            }}
-          />
-        )
-      }}
-        
-    />
+            },
+          } as TextFieldProps
+        }}
+      />
     </LocalizationProvider>
   );
 }

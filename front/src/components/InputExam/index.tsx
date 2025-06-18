@@ -9,5 +9,5 @@ export default function InputExam(){
         options.push(row.name);
     })
 
-    return <AutoComplete options={options} label={'Exame'}/>
+    return <AutoComplete options={options} label='Exame'/>
 }
