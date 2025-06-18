@@ -42,7 +42,7 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     data: {
       value: "",
       error: false,
-      errorText: "Campo Obrigatório",
+      errorText: "* Campo Obrigatório",
       label: "Data",
       placeholder: "Seleciona a Data",
       required: true
@@ -51,11 +51,20 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
       // value: timeStringToDate("00:00:00").toString(),
       value: "",
       error: false,
-      errorText: "Campo Obrigatório",
+      errorText: "* Campo Obrigatório",
       label: "Horário",
       placeholder: "Seleciona a Data",
       required: true
+    },
+    exam: {
+      value: "",
+      error: false,
+      errorText: "* Campo Obrigatório",
+      label: "Exame",
+      placeholder: "Seleciona o Exame",
+      required: true
     }
+
   });
 
   return (

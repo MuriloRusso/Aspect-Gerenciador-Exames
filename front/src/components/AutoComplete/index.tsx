@@ -1,17 +1,36 @@
-import * as React from 'react';
-import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import { TextField } from '@mui/material';
+import { SchedulingData } from '../../types/scheduling';
+import { Option } from '../../types/input';
 
+type AutoCompleteProps = {
+  options: Option[];
+  state: SchedulingData["exam"];
+  onChange: (fieldName: keyof SchedulingData, newValue: string) => void;
+};
 
+export default function AutoComplete({ options, state, onChange }: AutoCompleteProps) {
+  // Encontrar o objeto da opção correspondente ao value atual
+  const selectedOption = options.find(option => option.value.toString() === state.value.toString()) || null;
 
-export default function AutoComplete({options, label}:{options:string[], label: string}) {
   return (
     <Autocomplete
       disablePortal
-    //   value={}
+      value={selectedOption}
+      onChange={(_, newValue: Option | null) => {
+        onChange('exam', newValue?.value.toString() || '');
+      }}
       options={options}
+      getOptionLabel={(option) => option.text}
       sx={{ width: 300 }}
-      renderInput={(params) => <TextField {...params} label={label} />}
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          label={state.label}
+          error={state.error}
+          helperText={state.error ? state.errorText || 'Campo obrigatório' : ''}
+        />
+      )}
     />
   );
 }

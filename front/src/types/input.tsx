@@ -6,3 +6,8 @@ export type inputProps = {
     placeholder?: string;
     required?: boolean;
 }
+
+export type Option = {
+  value: number;
+  text: string;
+};

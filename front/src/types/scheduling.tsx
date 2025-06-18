@@ -13,4 +13,5 @@ export type Scheduling = {
 export type SchedulingData = {
     data: inputProps;
     time: inputProps;
+    exam: inputProps;
 }
