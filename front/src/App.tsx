@@ -11,6 +11,7 @@ import ModalExamsList from './components/ModalExamsList';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import Toast from './components/Toast';
+import ModalDeleteScheduling from './components/ModalDeleteScheduling';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Grid sx={{backgroundColor: "#30503a", height: '100vh', padding: 2}}>
         <List/>
         <ModalScheduling/>
+        <ModalDeleteScheduling/>
         <ModalExamsList/>
         <Toast/>
       </Grid>

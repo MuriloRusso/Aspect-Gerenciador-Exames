@@ -10,7 +10,6 @@ export default function useColumns() {
         { field: '', headerName: 'Ações', width: 150, renderCell: function(e){
             return <TrashIcon title="Excluir"/>
         }}
-
     ];
     return {columns}
 }
