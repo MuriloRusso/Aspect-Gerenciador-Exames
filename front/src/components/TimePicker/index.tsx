@@ -23,13 +23,6 @@ export default function CustomTimePicker({ state, onChange }: CustomTimePickerPr
           textField: {
             error: state.error,
             helperText: state.error ? state.errorText || 'Campo obrigatório' : '',
-            sx: {
-              '& .MuiOutlinedInput-root': {
-                '& fieldset': {
-                  borderColor: state.error ? 'red' : undefined,
-                },
-              },
-            },
           } as TextFieldProps
         }}
       />
