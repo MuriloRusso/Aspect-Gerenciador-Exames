@@ -1,8 +1,10 @@
 import { createContext, useState, ReactNode } from 'react';
-import { SchedulingData } from '../types/scheduling';
+import { Scheduling, SchedulingData } from '../types/scheduling';
 import { ToastProps } from '../types/toast';
 
 type GlobalContextType = {
+  selectedScheduling: Scheduling | null;
+  setSelectedScheduling: React.Dispatch<React.SetStateAction<Scheduling | null>>;
   modalSchedulingOpen: boolean;
   setModalSchedulingOpen: React.Dispatch<React.SetStateAction<boolean>>;
   modalDeleteSchedulingOpen: boolean;
@@ -13,11 +15,14 @@ type GlobalContextType = {
   setSchedulingData: React.Dispatch<React.SetStateAction<SchedulingData>>;
   toasts: ToastProps[];
   setToasts: React.Dispatch<React.SetStateAction<ToastProps[]>>;
+  
 };
 
 export const GlobalContext = createContext<GlobalContextType>({} as GlobalContextType);
 
 export const GlobalProvider = ({ children }: { children: ReactNode }) => {
+
+  const [selectedScheduling, setSelectedScheduling] = useState<Scheduling | null>(null);
   const [modalSchedulingOpen, setModalSchedulingOpen] = useState<boolean>(false);
   const [modalDeleteSchedulingOpen, setModalDeleteSchedulingOpen] = useState<boolean>(false);
   const [modalExamsOpen, setModalExamsOpen] = useState<boolean>(false);
@@ -52,6 +57,8 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
   return (
     <GlobalContext.Provider value={
         {
+          selectedScheduling,
+          setSelectedScheduling,
           modalSchedulingOpen,
           setModalSchedulingOpen,
           modalExamsOpen,
