@@ -3,6 +3,8 @@ import { Scheduling, SchedulingData } from '../types/scheduling';
 import { ToastProps } from '../types/toast';
 
 type GlobalContextType = {
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   rows: Scheduling[];
   setRows: React.Dispatch<React.SetStateAction<Scheduling[]>>
   selectedScheduling: Scheduling | null;
@@ -23,7 +25,8 @@ type GlobalContextType = {
 export const GlobalContext = createContext<GlobalContextType>({} as GlobalContextType);
 
 export const GlobalProvider = ({ children }: { children: ReactNode }) => {
-
+  
+  const [ loading, setLoading ] = useState<boolean>(false);
   const [ rows, setRows ] = useState<Scheduling[]>([]);
   const [selectedScheduling, setSelectedScheduling] = useState<Scheduling | null>(null);
   const [modalSchedulingOpen, setModalSchedulingOpen] = useState<boolean>(false);
@@ -70,6 +73,8 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
   return (
     <GlobalContext.Provider value={
         {
+          loading,
+          setLoading,
           rows,
           setRows,
           selectedScheduling,
