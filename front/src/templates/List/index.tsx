@@ -14,7 +14,7 @@ export default function List(){
     const { columns } = useColumns();
 
     useEffect(()=> {
-        console.log('rows');
+        console.log('rows data Grid');
         console.log(rows);
         
     }, [rows])
