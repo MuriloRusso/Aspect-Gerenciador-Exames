@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import ButtonSecondary from "../ButtonSecondary";
-import ButtonCreateSchuduling from "../ButtonCreateSchuduling";
 import useModals from "../../hooks/useModals";
+import ButtonDeleteSchuduling from "../ButtonDeleteSchuduling";
 
 
 export default function ModalDeleteSchedulingFooter(){
@@ -9,7 +9,7 @@ export default function ModalDeleteSchedulingFooter(){
     return (
         <Grid sx={{display: "flex", gap: 3, justifyContent: "flex-end", paddingTop: 3}}>
             <ButtonSecondary value="Cancelar" onClick={toogleModalScheduling} />
-            <ButtonCreateSchuduling />
+            <ButtonDeleteSchuduling />
         </Grid>
     )
 }
