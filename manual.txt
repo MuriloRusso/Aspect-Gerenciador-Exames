@@ -1,0 +1,6 @@
+Pressione Windows + R para abrir o promt de comando.
+
+Digite "cmd" e clique em OK
+
+Execute a função: cd caminho-do-projeto/
+
