@@ -1,70 +1,65 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import { AppDataSource } from "./data-source";
 import { cadExam } from "./entity/Exam";
 import { cadScheduling } from "./entity/Scheduling";
 import { VercelRequest, VercelResponse } from "@vercel/node";
+import cors from "cors";
 
-const cors = require('cors');
+let cachedApp: ReturnType<typeof express> | null = null;
 
-const app = express();
- 
-// Habilita CORS para todas as origens
-app.use(cors());
+async function createApp() {
+  const app = express();
 
-// ou, para permitir só o frontend
-app.use(cors({
-  origin: 'http://localhost:3001'
-}));
+  app.use(cors({ origin: "http://localhost:3001" }));
+  app.use(express.json());
 
-app.use(express.json());
+  // Conecta com o banco se necessário
+  if (!AppDataSource.isInitialized) {
+    await AppDataSource.initialize();
+    console.log("📦 Banco de dados conectado com sucesso!");
+  }
 
-AppDataSource.initialize().then(() => {
-  console.log("📦 Banco de dados conectado com sucesso!");
-
-  app.get("/exam", async (req, res) => {
+  app.get("/exam", async (_req: Request, res: Response) => {
     const exams = await AppDataSource.getRepository(cadExam).find();
     res.json(exams);
   });
 
-  app.get("/scheduling", async (req, res) => {
+  app.get("/scheduling", async (_req: Request, res: Response) => {
     const scheduling = await AppDataSource.getRepository(cadScheduling).find({
-      relations: ['exam']
+      relations: ["exam"],
     });
     res.json(scheduling);
   });
 
-  app.post("/scheduling", async (req, res) => {
+  app.post("/scheduling", async (req: Request, res: Response) => {
     const repo = AppDataSource.getRepository(cadScheduling);
     const newScheduling = repo.create(req.body);
     const result = await repo.save(newScheduling);
     res.status(201).json(result);
   });
 
-  app.delete("/scheduling/:id", async (req: any, res: any) => {
-  const { id } = req.params;
-  const repo = AppDataSource.getRepository(cadScheduling);
+  // app.delete("/scheduling/:id", async (req: Request, res: Response) => {
+  //   const { id } = req.params;
+  //   const repo = AppDataSource.getRepository(cadScheduling);
 
-  try {
-    const result = await repo.delete(Number(id));
-
-    if (result.affected === 0) {
-      return res.status(404).json({ message: "Agendamento não encontrado." });
-    }
-
-    return res.status(200).json({ message: "Agendamento removido com sucesso." });
-  } catch (error) {
-      return res.status(500).json({ message: "Erro ao deletar agendamento.", error });
-    }
-  });
-
-
-  // app.listen(3000, () => {
-  //   console.log("🚀 Servidor rodando em http://localhost:3000");
+  //   try {
+  //     const result = await repo.delete(Number(id));
+  //     if (result.affected === 0) {
+  //       return res.status(404).json({ message: "Agendamento não encontrado." });
+  //     }
+  //     return res.status(200).json({ message: "Agendamento removido com sucesso." });
+  //   } catch (error) {
+  //     return res.status(500).json({ message: "Erro ao deletar agendamento.", error });
+  //   }
   // });
-  
-}).catch((error) => console.error("Erro ao conectar no banco:", error));
 
+  return app;
+}
 
-export default function handler(req: VercelRequest, res: VercelResponse) {
-  app(req, res);
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+  if (!cachedApp) {
+    cachedApp = await createApp();
+  }
+
+  return cachedApp(req, res);
 }
