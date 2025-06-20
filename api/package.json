@@ -21,10 +21,11 @@
     "typeorm": "^0.3.24"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/node": "^24.0.1",
+    "@vercel/node": "^1.14.0",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.8.3",
-    "@vercel/node": "^1.14.0"
+    "typescript": "^5.8.3"
   }
 }
