@@ -2,6 +2,7 @@ import express from "express";
 import { AppDataSource } from "./data-source";
 import { cadExam } from "./entity/Exam";
 import { cadScheduling } from "./entity/Scheduling";
+import { VercelRequest, VercelResponse } from "@vercel/node";
 
 const cors = require('cors');
 
@@ -57,7 +58,13 @@ AppDataSource.initialize().then(() => {
   });
 
 
-  app.listen(3000, () => {
-    console.log("🚀 Servidor rodando em http://localhost:3000");
-  });
+  // app.listen(3000, () => {
+  //   console.log("🚀 Servidor rodando em http://localhost:3000");
+  // });
+  
 }).catch((error) => console.error("Erro ao conectar no banco:", error));
+
+
+export default function handler(req: VercelRequest, res: VercelResponse) {
+  app(req, res);
+}
