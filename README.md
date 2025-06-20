@@ -31,4 +31,27 @@ cd seu-repositorio
 🚀 Executando a API (Back-End)
 Crie um banco de dados MySQL local com o nome:
 
+```bash
+aspect
+````
+
+Acesse a pasta da API:
+```bash
+cd api
+````
+
+Altere o arquivo .env localizado dentro da pasta api, com as credenciais do seu banco MySQL local:
+```bash
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASS=
+DB_NAME=aspect
+````
+
+Instale as dependências:
+```bash
+npm install
+````
+
 
