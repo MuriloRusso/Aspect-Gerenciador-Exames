@@ -10,7 +10,11 @@ let cachedApp: ReturnType<typeof express> | null = null;
 async function createApp() {
   const app = express();
 
-  app.use(cors({ origin: "http://localhost:3001" }));
+  app.use(
+    cors({
+      origin: ["http://localhost:3001", "https://aspect-gerenciador-exames.vercel.app"],
+    })
+  );
   app.use(express.json());
 
   // Conecta com o banco se necessário
