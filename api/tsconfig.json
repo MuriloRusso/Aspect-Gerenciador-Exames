@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "ES2021",
     "module": "CommonJS",
+    "lib": ["ES2021"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "strictPropertyInitialization": false, // ou use `!` como te mostrei
+    "strictPropertyInitialization": false,
     "esModuleInterop": true,
     "outDir": "./dist"
-    
   },
   "include": ["src"]
 }
