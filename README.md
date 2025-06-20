@@ -41,7 +41,7 @@ cd api
 ````
 
 Altere o arquivo .env localizado dentro da pasta api, com as credenciais do seu banco MySQL local:
-```bash
+```code
 DB_HOST=localhost
 DB_PORT=3306
 DB_USER=root
