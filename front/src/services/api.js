@@ -1,13 +1,11 @@
 // src/services/api.js
 import axios from 'axios';
 
-const localUrlApi = 'http://localhost:3000/';
-const VarcelUrlApi = 'https://aspect-gerenciador-exames-api2.vercel.app/';
-
+// const UrlAPI = 'http://localhost:3000/';
+const UrlAPI = 'https://aspect-gerenciador-exames-api2.vercel.app/';
 
 const api = axios.create({
-  // baseURL: localUrlApi,
-  baseURL: VarcelUrlApi,
+  baseURL: UrlAPI,
   headers: {
     'Content-Type': 'application/json',
   },
