@@ -9,6 +9,8 @@ export default function useGetList() {
   const { loading, toogleLoading } = useLoading();
 
   const getAll = async () => {
+    console.log('init getall');
+    
     try {
     //   toogleLoading();
       const response = await api.get<Scheduling[]>('/scheduling');
@@ -17,7 +19,7 @@ export default function useGetList() {
     } catch (error) {
       console.error(error);
     } finally {
-      toogleLoading(false);
+      toogleLoading();
       console.log('fim getAll');
     }
   };
