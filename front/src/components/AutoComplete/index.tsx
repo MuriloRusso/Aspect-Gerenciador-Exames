@@ -17,6 +17,7 @@ export default function AutoComplete({ options, state, onChange }: AutoCompleteP
     <Autocomplete
       disablePortal
       value={selectedOption}
+      noOptionsText="Sem resultados"
       onChange={(_, newValue: Option | null) => {
         onChange('exam', newValue?.value.toString() || '');
       }}
