@@ -11,20 +11,21 @@ type State = {
 
 
 type inputProps = {
+    name: keyof SchedulingData;
     state: State;
-    onChange: (newValue: string) => void;
+    onChange: (fieldName: keyof SchedulingData, newValue: string) => void;
     rows?: number;
-    multiline?: boolean
+    multiline?: boolean;
 };
 
 
-export default function Input({state, onChange, rows, multiline}:inputProps){
+export default function Input({name, state, onChange, rows, multiline}:inputProps){
     const borderColor = "#f00";
     return (
         <TextField
             variant="standard"
             value={state.value}
-            onChange={(e) => onChange(e.target.value)}
+            onChange={(e) => onChange(name, e.target.value)}
             multiline
             rows={rows ? rows : 1}
 

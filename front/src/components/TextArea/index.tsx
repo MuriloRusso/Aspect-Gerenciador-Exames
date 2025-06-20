@@ -3,10 +3,11 @@ import Input from "../Input";
 import useFields from "../../hooks/useFields";
 
 export default function TextArea(){
-    const { schedulingData } = useFields();
+    const { schedulingData, handleChangeSchedulingData } = useFields();
     return <Input 
           state={schedulingData.informations}
-          onChange={()=>{}}
+          name="informations"
+          onChange={handleChangeSchedulingData}
           multiline
           rows={5}
         />
