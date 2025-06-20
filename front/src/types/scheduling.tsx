@@ -15,4 +15,5 @@ export type SchedulingData = {
     data: inputProps;
     time: inputProps;
     exam: inputProps;
+    informations: inputProps;
 }

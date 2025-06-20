@@ -1,25 +1,38 @@
 import { TextField } from "@mui/material";
+import { SchedulingData } from "../../types/scheduling";
 
-type inputProps = {
+type State = {
     value: string;
     error?: boolean;
     errorText?: string;
     placeholder?: string;
-    onChange: (newValue: string) => void;
     required?: boolean;
 }
 
-export default function Input({value, error, errorText, onChange, placeholder, required}:inputProps){
+
+type inputProps = {
+    state: State;
+    onChange: (newValue: string) => void;
+    rows?: number;
+    multiline?: boolean
+};
+
+
+export default function Input({state, onChange, rows, multiline}:inputProps){
     const borderColor = "#f00";
     return (
         <TextField
-            value={value}
+            variant="standard"
+            value={state.value}
             onChange={(e) => onChange(e.target.value)}
-            error={error}
-            helperText={error ? errorText : ""}
-            required={required}
-            placeholder={placeholder}
-            sx={{width: "100%", minWidth: 40, borderRadius: '8px', borderColor: error ? borderColor : "#000", backgroundColor: "#fff"}}
+            multiline
+            rows={rows ? rows : 1}
+
+            error={state.error}
+            helperText={state.error ? state.errorText : ""}
+            required={state.required}
+            placeholder={state.placeholder}
+            sx={{width: "100%", minWidth: 40, borderRadius: '8px', borderColor: state.error ? borderColor : "#000", backgroundColor: "#fff"}}
         />
     )
 }

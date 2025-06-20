@@ -67,6 +67,14 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
       label: "Exame",
       placeholder: "Seleciona o Exame",
       required: true
+    },
+    informations: {
+      value: "",
+      error: false,
+      errorText: "* Campo Obrigatório",
+      label: "Exame",
+      placeholder: "Informações...",
+      required: false
     }
 
   });
