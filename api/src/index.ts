@@ -12,7 +12,7 @@ async function createApp() {
 
   app.use(
     cors({
-      origin: ["http://localhost:3001", "https://aspect-gerenciador-exames.vercel.app"],
+      origin: ["http://localhost:3001", "https://aspect-gerenciador-exames.vercel.app", "https://murilorusso.com.br"],
     })
   );
   app.use(express.json());
