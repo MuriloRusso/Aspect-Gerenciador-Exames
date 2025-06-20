@@ -92,4 +92,9 @@ Edite o arquivo front/src/services/api.js e defina a URL da API local:
 const UrlAPI = 'http://localhost:3000/';
 ````
 
+Inicie o servidor de desenvolvimento do front:
+```bash
+npm start
+````
 
+> **Importante:** Como a porta 3000 já estará ocupada pela API, o React perguntará se pode usar a porta 3001. Confirme digitando Y..  
