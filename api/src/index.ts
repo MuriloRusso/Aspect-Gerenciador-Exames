@@ -38,20 +38,21 @@ async function createApp() {
     res.status(201).json(result);
   });
 
-  // app.delete("/scheduling/:id", async (req: Request, res: Response) => {
-  //   const { id } = req.params;
-  //   const repo = AppDataSource.getRepository(cadScheduling);
+  app.delete("/scheduling/:id", async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const repo = AppDataSource.getRepository(cadScheduling);
+    // res.status(200).json({ message: "Agendamento removido com sucesso." });
 
-  //   try {
-  //     const result = await repo.delete(Number(id));
-  //     if (result.affected === 0) {
-  //       return res.status(404).json({ message: "Agendamento não encontrado." });
-  //     }
-  //     return res.status(200).json({ message: "Agendamento removido com sucesso." });
-  //   } catch (error) {
-  //     return res.status(500).json({ message: "Erro ao deletar agendamento.", error });
-  //   }
-  // });
+    try {
+      const result = await repo.delete(Number(id));
+      if (result.affected === 0) {
+        res.status(404).json({ message: "Agendamento não encontrado." });
+      }
+      res.status(200).json({ message: "Agendamento removido com sucesso." });
+    } catch (error) {
+      res.status(500).json({ message: "Erro ao deletar agendamento.", error });
+    }
+  });
 
   return app;
 }
