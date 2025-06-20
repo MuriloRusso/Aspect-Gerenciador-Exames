@@ -54,4 +54,23 @@ Instale as dependências:
 npm install
 ````
 
+Altere linha de aquivo package.json localizado na pasta front:
 
+De:
+```bash
+"dev": "ts-node-dev src/index.ts"
+````
+Para:
+```bash
+"dev": "ts-node-dev src/server.ts"
+````
+
+Rode a seed para popular o banco:
+```bash
+npx ts-node src/seed.ts
+````
+
+Inicie o servidor da API:
+```bash
+npm run dev
+````
