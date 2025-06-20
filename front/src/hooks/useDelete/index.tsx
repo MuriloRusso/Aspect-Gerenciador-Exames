@@ -13,7 +13,7 @@ export default function useDelete() {
 
   const drop = () => {
 
-    toogleLoading(true);
+    // toogleLoading(true);
     
     selectedScheduling &&
     

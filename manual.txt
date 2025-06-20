@@ -1,6 +1,48 @@
+criar banco de dados mysql localmente
+
+clonar repositorio em uma pasta vázia
+
+
+
+Executando Api:
+
+Altere o arquivo .env da pasta api, incluindo as credencias do banco de dados mySQL que foi criado.
+Normalmente os dados são esses:
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASS=
+DB_NAME=aspect
+
 Pressione Windows + R para abrir o promt de comando.
 
 Digite "cmd" e clique em OK
 
-Execute a função: cd caminho-do-projeto/
+Execute a função: cd caminho-do-projeto/api para acessar a pasta da api
 
+Execute a função: npm install
+
+edite o arquivo package.json dentro da pasta api: "dev": "ts-node-dev src/index.ts" para "dev": "ts-node-dev src/server.ts",
+
+npx ts-node src/seed.ts
+
+npm run dev
+
+
+
+Executando Front
+
+Pressione Windows + R para abrir o promt de comando.
+
+Digite "cmd" e clique em OK
+
+Execute a função: cd caminho-do-projeto/front para acessar a pasta do front-end
+
+Execute a função: npm install --force
+
+
+edite o arquivo api.js dentro da pasta front/src/services: "dev": Altere a variável para a url do back-end "http://localhost:3000/"
+
+Execute a função: npm start run
+
+obs: por a porta 3000 estar ocupada com a api, vai perguntar se pode abrir o front na porta 3001, basta confirmar

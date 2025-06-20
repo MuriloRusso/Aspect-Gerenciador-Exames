@@ -19,7 +19,7 @@ export default function useGetList() {
     } catch (error) {
       console.error(error);
     } finally {
-      toogleLoading();
+      toogleLoading(false);
       console.log('fim getAll');
     }
   };
