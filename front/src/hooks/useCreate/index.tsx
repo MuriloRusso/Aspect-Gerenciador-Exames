@@ -48,7 +48,7 @@ export default function useCreate() {
       exam: { "id": Number(schedulingData.exam.value) },
       // id_exam: Number(schedulingData.exam.value) ,
       date_time: fullDateTime.toISOString(),
-      informations: "teste"
+      informations: schedulingData.informations.value ? schedulingData.informations.value : ""
     };
 
     api.post('/scheduling', json)
