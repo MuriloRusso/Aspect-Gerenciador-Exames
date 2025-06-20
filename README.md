@@ -57,11 +57,11 @@ npm install
 Altere linha de aquivo package.json localizado na pasta front:
 
 De:
-```bash
+```code
 "dev": "ts-node-dev src/index.ts"
 ````
 Para:
-```bash
+```code
 "dev": "ts-node-dev src/server.ts"
 ````
 
@@ -74,3 +74,22 @@ Inicie o servidor da API:
 ```bash
 npm run dev
 ````
+
+
+💻 Executando o Front-End (React)
+Abra o terminal ou prompt de comando e execute:
+```bash
+cd seu-repositorio/front
+````
+
+Instale as dependências (forçando para ignorar conflitos de versão):
+```bash
+npm install --force
+````
+
+Edite o arquivo front/src/services/api.js e defina a URL da API local:
+```code
+const UrlAPI = 'http://localhost:3000/';
+````
+
+
