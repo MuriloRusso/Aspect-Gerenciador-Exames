@@ -2,6 +2,15 @@
 
 Sistema completo para cadastro, agendamento e listagem de exames médicos, utilizando Node.js (Express + TypeORM) no back-end e React no front-end.
 
+🔗 Link de Acesso: https://aspect-gerenciador-exames.vercel.app/
+
+> **Importante:** Devido a uma limitação da plataforma Vercel, o link acima ainda não disponibiliza a versão finalizada do sistema. Alguns recursos podem estar ausentes ou incompletos.
+
+No entanto, é possível instalar e executar o sistema localmente seguindo as instruções fornecidas neste repositório.
+
+A versão final estará disponível no link acima entre os dias 20/06/2025 e 22/06/2025.
+
+
 ---
 
 ## 📦 Instalação Local
