@@ -1,15 +1,18 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { cadExam } from "./entity/Exam";       // ajuste o caminho
-import { cadScheduling } from "./entity/Scheduling"; // ajuste o caminho
+import { config } from "dotenv";
+import { cadExam } from "./entity/Exam";
+import { cadScheduling } from "./entity/Scheduling";
+
+config(); // Carrega as variáveis do .env
 
 export const AppDataSource = new DataSource({
   type: "mysql",
-  host: "localhost",
-  port: 3306,
-  username: "root",
-  password: "root",
-  database: "aspect",
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT),
+  username: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
   synchronize: true,
   logging: false,
   entities: [cadExam, cadScheduling],
