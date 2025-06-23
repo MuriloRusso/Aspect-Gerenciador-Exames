@@ -14,7 +14,7 @@ export default function List() {
   const { loading } = useLoading();
   
   return (
-      <Paper sx={{ maxHeight: "60vh" }}>
+      <Paper sx={{ maxHeight: "60vh", minHeight: 500 }}>
         <Grid sx={{ display: 'flex', justifyContent: "flex-end", padding: 2, gap: 2 }}>
           { loading ? <Skeleton variant="rounded" width='107px' height="40px" /> : <ButtonExamsList />}
           { loading ? <Skeleton variant="rounded" width='200' height="40px" /> : <ButtonNewScheduling />}

@@ -19,7 +19,23 @@ export default function Container(){
 
 
     return (
-        <Grid sx={{backgroundColor: "#30503a", height: '100vh', padding: 2}}>
+        <Grid
+            sx={
+                {
+                    backgroundColor: "#30503a",
+                    height: '100vh',
+                    padding: 2,
+                    backgroundImage: "url('/assets/bg.jpg')",
+                    backgroundSize: 'cover',
+                    // display: 'flex',
+                    // alignItems: 'flex-end',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'right',
+                    backgroundBlendMode: 'multiply',
+                    alignContent: 'flex-end'
+                }
+            }
+        >
             <List/>
             <ModalScheduling/>
             <ModalDeleteScheduling/>
