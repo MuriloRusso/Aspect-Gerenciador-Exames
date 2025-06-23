@@ -13,14 +13,12 @@ export default function useDelete() {
 
   const drop = () => {
 
-    // toogleLoading(true);
+    toogleLoading(true);
     
     selectedScheduling &&
     
     api.delete('/scheduling/' + selectedScheduling.id)
       .then(response => {
-        console.log(response.data);
-        // toogleLoading();
         toogleModalDeleteScheduling();
         addToast({
           id: 0,
@@ -29,7 +27,6 @@ export default function useDelete() {
           variant: "filled"
         });
         getAll();
-        // toogleLoading();
       })
       .catch(error => console.error(error));
   }

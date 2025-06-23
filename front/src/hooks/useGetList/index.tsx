@@ -8,19 +8,15 @@ export default function useGetList() {
   const { rows, setRows } = useContext(GlobalContext);
   const { loading, toogleLoading } = useLoading();
 
-  const getAll = async () => {
-    console.log('init getall');
-    
+  const getAll = async () => {   
     try {
-    //   toogleLoading();
+      toogleLoading(true);
       const response = await api.get<Scheduling[]>('/scheduling');
-      console.log('req getAll executed');
       setRows(response.data);
     } catch (error) {
       console.error(error);
     } finally {
       toogleLoading(false);
-      console.log('fim getAll');
     }
   };
   return { rows, getAll };

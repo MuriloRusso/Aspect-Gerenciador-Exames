@@ -53,7 +53,6 @@ export default function useCreate() {
 
     api.post('/scheduling', json)
       .then(response => {
-        console.log(response.data);
         toogleModalScheduling();
         addToast({
           id: 1,
@@ -72,8 +71,6 @@ export default function useCreate() {
           variant: "filled"
         });
       });
-
-    console.log("Data final enviada:", json);
   };
 
   return { create };

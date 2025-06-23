@@ -10,14 +10,10 @@ import useGetList from "../../hooks/useGetList";
 
 export default function Container(){
     const { loading } = useLoading();
-
     const { getAll } = useGetList();
     useEffect(() => {
-        console.log('useeffect getall');        
         getAll();
     }, []);
-
-
     return (
         <Grid
             sx={

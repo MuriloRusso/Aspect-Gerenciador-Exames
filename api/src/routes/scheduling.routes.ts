@@ -8,16 +8,9 @@ const repo = AppDataSource.getRepository(cadScheduling);
 
 router.get("/", async (req, res) => {
   try {
-
-    console.log('fdsfadadfasfd');
-
     const schedulings = await repo.find({
       relations: ['exam'], // <-- Isso carrega os dados do exame relacionado
-    });
-    console.log('fdsfadadfasfd');
-    
-    console.log(schedulings);
-    
+    });    
     res.json(schedulings);
   } catch (error) {
     console.error("Erro ao buscar agendamentos:", error);

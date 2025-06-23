@@ -5,9 +5,7 @@ import { SchedulingData } from "../../types/scheduling";
 export default function useFields(){
     const { schedulingData, setSchedulingData } = useContext(GlobalContext);
 
-    const handleChangeSchedulingData = (fieldName: keyof SchedulingData, newValue: string) => {
-        console.log(newValue.trim() === "");
-        
+    const handleChangeSchedulingData = (fieldName: keyof SchedulingData, newValue: string) => {       
         setSchedulingData(prev => ({
             ...prev,
             [fieldName]: {
