@@ -23,7 +23,7 @@ export default function Input({name, state, onChange, rows, multiline}:inputProp
     const borderColor = "#f00";
     return (
         <TextField
-            variant="standard"
+            // variant="standard"
             value={state.value}
             onChange={(e) => onChange(name, e.target.value)}
             multiline
