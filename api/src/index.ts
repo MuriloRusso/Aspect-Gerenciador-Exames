@@ -22,7 +22,6 @@ async function createApp() {
     await AppDataSource.initialize();
     console.log("📦 Banco de dados conectado com sucesso!");
   }
-
   app.get("/exam", async (_req: Request, res: Response) => {
     const exams = await AppDataSource.getRepository(cadExam).find();
     res.json(exams);
