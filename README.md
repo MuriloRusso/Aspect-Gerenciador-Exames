@@ -1,4 +1,4 @@
-# Aspect - Gerenciador de Exames
+# Gerenciador de Exames
 
 Sistema completo para cadastro, agendamento e listagem de exames médicos, utilizando Node.js (Express + TypeORM) no back-end e React no front-end.
 
